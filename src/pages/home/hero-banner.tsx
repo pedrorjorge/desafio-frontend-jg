@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 
 import { LoadingSkeleton } from "@/components/common/loading-skeleton";
 import type { CatalogItem } from "@/types/api";
+import heroBannerImg from "@/assets/header_principal.png";
 
 export function HeroBanner({
   spotlight,
@@ -41,8 +42,8 @@ export function HeroBanner({
           className="block overflow-hidden rounded-panel focus-visible:outline-ring"
         >
           <img
-            src={spotlight.image.src}
-            alt={spotlight.image.alt}
+            src={heroBannerImg}
+            alt={spotlight.image.alt || "Destaque KURIO"}
             width={1254}
             height={1254}
             fetchPriority="high"

@@ -12,6 +12,9 @@ import { NFTGrid, NFTGridSkeleton } from "@/components/common/nft-grid";
 import { Pagination } from "./home/pagination";
 import { SearchInput } from "./home/search-input";
 
+import promoImg1 from "@/assets/img1.png";
+import promoImg2 from "@/assets/img3.png";
+
 const featuredParams = { featured: true, page: 1, pageSize: 4 };
 
 type HomePageProps = {
@@ -193,18 +196,17 @@ export function HomePage({ search, onSearchChange }: HomePageProps) {
           Explore a coleção
         </h2>
         <div className="grid gap-4 md:grid-cols-2">
+          {/* Card de Promoção 1 */}
           <article className="relative isolate overflow-hidden rounded-panel border border-border bg-surface p-6 sm:p-8">
-            {featured.data?.items[1] && (
-              <img
-                src={featured.data.items[1].image.src}
-                alt=""
-                width={1254}
-                height={1254}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-y-0 right-0 -z-20 h-full w-1/2 object-cover"
-              />
-            )}
+            <img
+              src={promoImg1}
+              alt="Coleção em destaque"
+              width={1254}
+              height={1254}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-y-0 right-0 -z-20 h-full w-1/2 object-cover"
+            />
             <div
               aria-hidden="true"
               className="absolute inset-0 -z-10 bg-linear-to-r from-surface from-50% to-surface/75"
@@ -224,18 +226,18 @@ export function HomePage({ search, onSearchChange }: HomePageProps) {
               </Button>
             </div>
           </article>
+
+          {/* Card de Promoção 2 */}
           <article className="relative isolate overflow-hidden rounded-panel border border-border bg-card p-6 sm:p-8">
-            {featured.data?.items[2] && (
-              <img
-                src={featured.data.items[2].image.src}
-                alt=""
-                width={1254}
-                height={1254}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-y-0 right-0 -z-20 h-full w-1/2 object-cover"
-              />
-            )}
+            <img
+              src={promoImg2}
+              alt="Edições disponíveis"
+              width={1254}
+              height={1254}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-y-0 right-0 -z-20 h-full w-1/2 object-cover"
+            />
             <div
               aria-hidden="true"
               className="absolute inset-0 -z-10 bg-linear-to-r from-card from-50% to-card/75"
