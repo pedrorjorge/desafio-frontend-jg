@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  --background: #140d0a;
+  --foreground: #f7ece4;
+  --card: #241612;
+  --card-foreground: var(--foreground);
+  --surface: #38220f;
+  --muted-foreground: #c8b0a0;
+  --primary: #d28a4c;
+  --primary-hover: #e5a26a;
+  --primary-foreground: #190e08;
+  --border: #533628;
+  --input: #82614d;
+  --ring: #f1ab69;
+  --destructive: #ffad9d;
+  --skeleton: #402a21;
+  --skeleton-highlight: #644537;
+
+  --font-body: system-ui, sans-serif;
+  --font-heading: "Courier New", monospace;
+  --control-radius: 0.375rem;
+  --panel-radius: 0.5rem;
+  --content-width: 74rem;
+  --content-gutter: clamp(1rem, 3vw, 2.5rem);
+  --section-spacing: clamp(2rem, 4vw, 3.5rem);
+  --control-height: 2.75rem;
+  --mobile-nav-height: 4rem;
+  --navigation-clearance: calc(
+    var(--mobile-nav-height) + env(safe-area-inset-bottom)
+  );
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-surface: var(--surface);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+  --radius-control: var(--control-radius);
+  --radius-panel: var(--panel-radius);
+  --container-content: var(--content-width);
+  --spacing-gutter: var(--content-gutter);
+  --spacing-section: var(--section-spacing);
+  --spacing-control: var(--control-height);
+  --spacing-mobile-nav: var(--mobile-nav-height);
+}
+
+@layer base {
+  html {
+    scroll-padding-bottom: calc(var(--navigation-clearance) + 0.75rem);
+  }
+
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground;
+    overflow-wrap: anywhere;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-4 outline-ring;
+  }
+
+  :is(input, select, textarea):not([type="checkbox"], [type="radio"]) {
+    @apply min-h-control min-w-0 max-w-full rounded-control border border-input bg-background px-3 text-foreground;
+  }
+
+  :is(input, select, textarea):focus-visible {
+    @apply border-ring;
+  }
+
+  :is(button, input, select, textarea):disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+}
+
+@media (min-width: 48rem), (max-height: 26rem) {
+  :root {
+    --navigation-clearance: 0px;
+  }
+}
+
+@media (max-height: 26rem) {
+  .mobile-navigation {
+    position: static;
+  }
+}
+
+@layer components {
+  .skeleton-shimmer {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--skeleton);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .skeleton-shimmer::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: linear-gradient(
+        90deg,
+        transparent,
+        var(--skeleton-highlight),
+        transparent
+      );
+      animation: shimmer 1.5s ease-in-out infinite;
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}

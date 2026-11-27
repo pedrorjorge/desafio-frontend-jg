@@ -1,0 +1,5 @@
+docs/reference/
+package-lock.json
+
+lighthouse-reports/
+public/mockServiceWorker.js

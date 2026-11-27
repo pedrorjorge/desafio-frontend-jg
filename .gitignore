@@ -1,0 +1,15 @@
+node_modules/
+dist/
+.vercel/
+*.tsbuildinfo
+*.log
+.env
+.env.*
+!.env.example
+playwright-report/
+test-results/
+/public/mockServiceWorker.js
+
+!.env.demo
+
+/lighthouse-reports/
